@@ -4,11 +4,7 @@ function Home() {
   return (
     <div className='container mx-auto'>
       <div className='grid grid-cols-4 gap-4'>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Card id='1' />
       </div>
     </div>
   )
