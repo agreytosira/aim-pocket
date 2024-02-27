@@ -1,6 +1,6 @@
-import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getSavingsByID } from '../data/dummy'
+import { formatNumber } from '../utils/format'
 
 function Detail() {
   const { id } = useParams()
@@ -22,8 +22,8 @@ function Detail() {
       {/* Detail Tabungan */}
       <div className='items-center grid grid-cols-2 gap-2 my-4'>
         <div className='flex flex-col'>
-          <h2 className='text-2xl text-slate-900 font-bold'>Rp{target}</h2>
-          <h3 className='text-md text-slate-600 font-semibold'>Rp{nominal}/Hari</h3>
+          <h2 className='text-2xl text-slate-900 font-bold'>Rp{formatNumber(target)}</h2>
+          <h3 className='text-md text-slate-600 font-semibold'>Rp{formatNumber(nominal)}/Hari</h3>
         </div>
         <div className='flex flex-col'>
           <div className='flex items-center gap-2 w-full'>
@@ -40,11 +40,11 @@ function Detail() {
       <div className='border border-slate-300 grid grid-cols-2 p-4 rounded-xl mb-8'>
         <div className='flex flex-col text-center items-center'>
           <h5 className='text-xl font-semibold '>Terkumpul</h5>
-          <p className='text-green-600'>Rp{totalSaved}</p>
+          <p className='text-green-600'>Rp{formatNumber(totalSaved)}</p>
         </div>
         <div className='flex flex-col text-center items-center border-l border-l-slate-300'>
           <h5 className='text-xl font-semibold '>Kekurangan</h5>
-          <p className='text-red-600'>Rp{totalLess}</p>
+          <p className='text-red-600'>Rp{formatNumber(totalLess)}</p>
         </div>
       </div>
       {/* Riwayat Tabungan */}
@@ -57,7 +57,7 @@ function Detail() {
               <p className='text-sm font-medium text-slate-600'> {save.date}</p>
               <p className='font-semibold'>Isi Tabungan</p>
             </div>
-            <p className='text-green-600'>+Rp{save.value}</p>
+            <p className='text-green-600'>+Rp{formatNumber(save.value)}</p>
           </div>
         ))}
       </div>
