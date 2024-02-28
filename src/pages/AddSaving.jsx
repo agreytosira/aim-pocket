@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import savings from '../data/dummy'
+import savings, { addSaving } from '../data/dummy'
 
 const AddSaving = () => {
   const [name, setName] = useState('')
@@ -10,7 +10,7 @@ const AddSaving = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     const newSaving = {
-      id: (savings.length + 1).toString(), // Generate ID baru
+      id: (savings.length + 1).toString(),
       name,
       imageUrl,
       target: Number(target),
@@ -19,11 +19,8 @@ const AddSaving = () => {
       saved: []
     }
 
-    // Simpan data baru ke localStorage
-    const updatedSavings = [...savings, newSaving]
-    localStorage.setItem('savings', JSON.stringify(updatedSavings))
+    addSaving(newSaving)
 
-    // Reset form setelah data tersimpan
     setName('')
     setImageUrl('')
     setTarget(0)
