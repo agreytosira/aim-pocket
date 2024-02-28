@@ -30,7 +30,7 @@ function Detail() {
             <div className='bg-slate-300 w-full h-2 rounded-xl'>
               <div className='bg-blue-600 w-[75%] h-2 rounded-xl'></div>
             </div>
-            <p>{percentage.toFixed(1)}%</p>
+            <p>{percentage.toFixed(0)}%</p>
           </div>
           <p className='text-sm italic '>
             Tersisa <strong>{estimatedTime}</strong> hari lagi

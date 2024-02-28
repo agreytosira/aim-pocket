@@ -17,9 +17,9 @@ function Card({ id, isCompleted }) {
       <img className='aspect-video object-contain rounded-md' src={imageUrl} alt={name} />
       <div className='flex items-center gap-2'>
         <div className='bg-slate-300 w-full h-2 rounded-xl my-4'>
-          <div className={`bg-blue-600 w-[${percentage.toFixed(1)}%] h-2 rounded-xl`}></div>
+          <div className={`bg-blue-600 h-2 rounded-xl`} style={{ width: percentage.toFixed(2) + '%' }}></div>
         </div>
-        <p className='text-sm font-semibold'>{percentage.toFixed(1)}%</p>
+        <p className='text-sm font-semibold'>{percentage.toFixed(0)}%</p>
       </div>
       <h3 className='text-lg text-slate-900 font-bold'>{name}</h3>
       <h4 className='text-base text-slate-600 font-semibold'>Rp{formatNumber(target)}</h4>
