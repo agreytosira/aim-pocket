@@ -1,10 +1,12 @@
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getSavingsByID } from '../data/dummy'
 import { formatNumber } from '../utils/format'
+import AddSavingDataButton from '../components/AddSavingDataButton'
 
 function Detail() {
   const { id } = useParams()
-  const data = getSavingsByID(id)
+  const [data, setData] = useState(getSavingsByID(id))
   const { name, imageUrl, target, nominal, saved } = data
   const estimatedTime = target / nominal
 
@@ -28,7 +30,7 @@ function Detail() {
         <div className='flex flex-col'>
           <div className='flex items-center gap-2 w-full'>
             <div className='bg-slate-300 w-full h-2 rounded-xl'>
-              <div className='bg-blue-600 w-[75%] h-2 rounded-xl'></div>
+              <div className='bg-blue-600 h-2 rounded-xl' style={{ width: `${percentage.toFixed(0)}%` }}></div>
             </div>
             <p>{percentage.toFixed(0)}%</p>
           </div>
@@ -61,6 +63,7 @@ function Detail() {
           </div>
         ))}
       </div>
+      <AddSavingDataButton id={id} />
     </div>
   )
 }
