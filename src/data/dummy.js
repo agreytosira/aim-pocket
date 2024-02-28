@@ -5,6 +5,7 @@ const savings = [
     imageUrl: 'https://cdn.eraspace.com/media/catalog/product/a/p/apple_iphone_11_black_new_1_7.jpg',
     target: 7950000,
     nominal: 50000,
+    isCompleted: false,
     saved: [
       {
         date: '2024-02-26',
