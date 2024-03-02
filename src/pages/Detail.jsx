@@ -8,7 +8,7 @@ import DeleteSavingDataButton from '../components/DeleteSavingDataButton';
 function Detail() {
     const navigate = useNavigate();
     const { id } = useParams();
-    const data = getSavingsByID(id);
+    const [data, setData] = useState(getSavingsByID(id));
     const { name, imageUrl, target, nominal, saved, isCompleted } = data;
 
     const [estimatedTime, setEstimatedTime] = useState(0);
@@ -20,15 +20,22 @@ function Detail() {
         if (totalSaved !== target) {
             addSavingTransaction(id);
             updateData();
-        } else {
-            !isCompleted && setCompleted(id);
-            alert('sudah selesai 100%');
-            setPercentage(100);
+
+            const total = data.saved.reduce((acc, curr) => acc + curr.value, 0);
+            const percent = (total / target) * 100;
+
+            console.log(percent);
+
+            if (percent === 100) {
+                !isCompleted && setCompleted(id);
+                alert('selamat kamu telah mencapai target');
+                updateData();
+            }
         }
     };
 
     const deleteHandler = () => {
-        const confirmDelete = confirm('yakin hapus');
+        const confirmDelete = window.confirm('yakin hapus');
         if (confirmDelete) {
             deleteSaving(id);
             alert('tabungan dihapus');
@@ -37,10 +44,16 @@ function Detail() {
     };
 
     const updateData = () => {
-        setEstimatedTime((target - totalSaved) / nominal);
-        setTotalSaved(data.saved.reduce((total, current) => total + current.value, 0));
-        setTotalLess(target - totalSaved);
-        setPercentage((totalSaved / target) * 100);
+        const updatedData = getSavingsByID(id);
+        const total = updatedData.saved.reduce((acc, curr) => acc + curr.value, 0);
+        const less = target - total;
+        const percent = (total / target) * 100;
+
+        setData(updatedData);
+        setTotalSaved(total);
+        setTotalLess(less);
+        setPercentage(percent);
+        setEstimatedTime(less / nominal);
     };
 
     useEffect(() => {
@@ -98,7 +111,7 @@ function Detail() {
             </div>
             <div className='fixed right-4 bottom-4 space-x-4'>
                 {!isCompleted && <AddSavingDataButton addHandler={addHandler} />}
-                {<DeleteSavingDataButton deleteHandler={deleteHandler} />}
+                <DeleteSavingDataButton deleteHandler={deleteHandler} />
             </div>
         </div>
     );

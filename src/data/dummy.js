@@ -18,15 +18,18 @@ const deleteSaving = (id) => {
     localStorage.setItem('savings', JSON.stringify(savings));
 };
 
-function setCompleted({ id }) {
-    const savingToEdit = savings.find((note) => note.id.includes(id));
+function setCompleted(id) {
+    const savingToEdit = savings.find((saving) => saving.id === id);
 
-    savings = savings.map((saving) => {
-        if (saving.id === id) {
-            return { ...saving, isComplete: true };
-        }
-        return saving;
-    });
+    if (savingToEdit) {
+        savings = savings.map((saving) => {
+            if (saving.id === id) {
+                return { ...saving, isCompleted: true };
+            }
+            return saving;
+        });
+    }
+    localStorage.setItem('savings', JSON.stringify(savings));
 }
 
 const addSavingTransaction = (id) => {
