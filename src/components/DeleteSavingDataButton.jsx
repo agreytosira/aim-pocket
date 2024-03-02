@@ -1,6 +1,6 @@
 const DeleteSavingDataButton = ({ deleteHandler }) => {
     return (
-        <button className='font-semibold p-4 bg-blue-600' onClick={() => deleteHandler()}>
+        <button className='font-semibold p-4 bg-red-600 text-white' onClick={() => deleteHandler()}>
             Hapus Tabungan
         </button>
     );
