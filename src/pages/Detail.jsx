@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { setCompleted, addSavingTransaction, getSavingsByID } from '../data/dummy';
+import { useParams, useNavigate } from 'react-router-dom';
+import { setCompleted, addSavingTransaction, getSavingsByID, deleteSaving } from '../data/dummy';
 import { formatNumber } from '../utils/format';
 import AddSavingDataButton from '../components/AddSavingDataButton';
+import DeleteSavingDataButton from '../components/DeleteSavingDataButton';
 
 function Detail() {
+    const navigate = useNavigate();
     const { id } = useParams();
     const data = getSavingsByID(id);
     const { name, imageUrl, target, nominal, saved, isCompleted } = data;
@@ -22,6 +24,15 @@ function Detail() {
             !isCompleted && setCompleted(id);
             alert('sudah selesai 100%');
             setPercentage(100);
+        }
+    };
+
+    const deleteHandler = () => {
+        const confirmDelete = confirm('yakin hapus');
+        if (confirmDelete) {
+            deleteSaving(id);
+            alert('tabungan dihapus');
+            navigate('/');
         }
     };
 
@@ -85,7 +96,10 @@ function Detail() {
                     </div>
                 ))}
             </div>
-            {!isCompleted && <AddSavingDataButton addHandler={addHandler} />}
+            <div className='fixed right-4 bottom-4 space-x-4'>
+                {!isCompleted && <AddSavingDataButton addHandler={addHandler} />}
+                {<DeleteSavingDataButton deleteHandler={deleteHandler} />}
+            </div>
         </div>
     );
 }

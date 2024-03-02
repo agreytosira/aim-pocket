@@ -13,6 +13,11 @@ const addSaving = (newSaving) => {
     localStorage.setItem('savings', JSON.stringify(updatedSavings));
 };
 
+const deleteSaving = (id) => {
+    savings = savings.filter((saving) => saving.id !== id);
+    localStorage.setItem('savings', JSON.stringify(savings));
+};
+
 function setCompleted({ id }) {
     const savingToEdit = savings.find((note) => note.id.includes(id));
 
@@ -41,4 +46,4 @@ const addSavingTransaction = (id) => {
     localStorage.setItem('savings', JSON.stringify(updatedSavings));
 };
 
-export { getAllSavings, getSavingsByID, addSavingTransaction, addSaving, setCompleted };
+export { getAllSavings, getSavingsByID, addSavingTransaction, addSaving, deleteSaving, setCompleted };
