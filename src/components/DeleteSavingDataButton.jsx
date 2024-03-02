@@ -1,9 +1,9 @@
 const DeleteSavingDataButton = ({ deleteHandler }) => {
-    return (
-        <button className='font-semibold p-4 bg-red-600 text-white' onClick={() => deleteHandler()}>
-            Hapus Tabungan
-        </button>
-    );
-};
+  return (
+    <button className='p-4 font-semibold text-white bg-red-600 ' onClick={() => deleteHandler()}>
+      Hapus Tabungan
+    </button>
+  )
+}
 
-export default DeleteSavingDataButton;
+export default DeleteSavingDataButton

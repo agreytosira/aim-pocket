@@ -1,9 +1,9 @@
 const DecreaseSavingButton = ({ decreaseHandler }) => {
-    return (
-        <button className='font-semibold p-4 bg-orange-600 text-white' onClick={() => decreaseHandler()}>
-            Kurangi Isi Tabungan
-        </button>
-    );
-};
+  return (
+    <button className='p-4 font-semibold text-white bg-orange-600' onClick={() => decreaseHandler()}>
+      Kurangi Isi Tabungan
+    </button>
+  )
+}
 
-export default DecreaseSavingButton;
+export default DecreaseSavingButton
