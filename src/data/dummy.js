@@ -32,21 +32,50 @@ function setCompleted(id) {
     localStorage.setItem('savings', JSON.stringify(savings));
 }
 
-const addSavingTransaction = (id) => {
+function setIncompleted(id) {
+    const savingToEdit = savings.find((saving) => saving.id === id);
+
+    if (savingToEdit) {
+        savings = savings.map((saving) => {
+            if (saving.id === id) {
+                return { ...saving, isCompleted: false };
+            }
+            return saving;
+        });
+    }
+    localStorage.setItem('savings', JSON.stringify(savings));
+}
+
+const increaseSaving = (id) => {
     const saving = getSavingsByID(id);
-    const currentDate = new Date().toISOString().split('T')[0]; // Ambil tanggal hari ini
-    const value = saving.nominal; // Ambil nilai dari nominal
+    const currentDate = new Date().toISOString().split('T')[0];
+    const value = saving.nominal;
 
     const newSavingData = {
         date: currentDate,
-        value: parseFloat(value) // Konversi nilai ke tipe float
+        value: parseFloat(value)
     };
 
-    saving.saved.push(newSavingData); // Tambahkan data baru ke array saved
+    saving.saved.unshift(newSavingData);
 
-    // Perbarui data di localStorage
     const updatedSavings = savings.map((s) => (s.id === id ? saving : s));
     localStorage.setItem('savings', JSON.stringify(updatedSavings));
 };
 
-export { getAllSavings, getSavingsByID, addSavingTransaction, addSaving, deleteSaving, setCompleted };
+const decreaseSaving = (id) => {
+    const saving = getSavingsByID(id);
+    const currentDate = new Date().toISOString().split('T')[0];
+    const value = saving.nominal;
+
+    const newSavingData = {
+        date: currentDate,
+        value: parseFloat(-value)
+    };
+
+    saving.saved.unshift(newSavingData);
+
+    const updatedSavings = savings.map((s) => (s.id === id ? saving : s));
+    localStorage.setItem('savings', JSON.stringify(updatedSavings));
+};
+
+export { getAllSavings, getSavingsByID, increaseSaving, decreaseSaving, addSaving, deleteSaving, setCompleted, setIncompleted };

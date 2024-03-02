@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { setCompleted, addSavingTransaction, getSavingsByID, deleteSaving } from '../data/dummy';
+import { setCompleted, setIncompleted, increaseSaving, getSavingsByID, deleteSaving, decreaseSaving } from '../data/dummy';
 import { formatNumber } from '../utils/format';
-import AddSavingDataButton from '../components/AddSavingDataButton';
 import DeleteSavingDataButton from '../components/DeleteSavingDataButton';
+import DecreaseSavingButton from '../components/decreaseSavingButton';
+import IncreaseSavingButton from '../components/increaseSavingButton';
 
 function Detail() {
     const navigate = useNavigate();
@@ -16,9 +17,9 @@ function Detail() {
     const [totalLess, setTotalLess] = useState(0);
     const [percentage, setPercentage] = useState(0);
 
-    const addHandler = () => {
+    const increaseHandler = () => {
         if (totalSaved !== target) {
-            addSavingTransaction(id);
+            increaseSaving(id);
             updateData();
 
             const total = data.saved.reduce((acc, curr) => acc + curr.value, 0);
@@ -31,6 +32,15 @@ function Detail() {
                 alert('selamat kamu telah mencapai target');
                 updateData();
             }
+        }
+    };
+
+    const decreaseHandler = () => {
+        isCompleted && setIncompleted(id);
+
+        if (totalSaved > 0) {
+            decreaseSaving(id);
+            updateData();
         }
     };
 
@@ -99,18 +109,33 @@ function Detail() {
             <span className='tracking-[0.25em] font-semibold text-sm text-blue-600'>RIWAYAT TABUNGAN</span>
             <div className='flex flex-col mt-2'>
                 {/* History Item */}
-                {saved.map((save, index) => (
-                    <div className='flex items-center justify-between p-4 border border-slate-300' key={index}>
-                        <div className='flex flex-col'>
-                            <p className='text-sm font-medium text-slate-600'> {save.date}</p>
-                            <p className='font-semibold'>Isi Tabungan</p>
-                        </div>
-                        <p className='text-green-600'>+Rp{formatNumber(save.value)}</p>
-                    </div>
-                ))}
+                {saved.map((save, index) => {
+                    if (save.value > 0) {
+                        return (
+                            <div className='flex items-center justify-between p-4 border border-slate-300' key={index}>
+                                <div className='flex flex-col'>
+                                    <p className='text-sm font-medium text-slate-600'> {save.date}</p>
+                                    <p className='font-semibold text-green-600'>Isi Tabungan</p>
+                                </div>
+                                <p className='text-green-600'>+Rp{formatNumber(save.value)}</p>
+                            </div>
+                        );
+                    } else {
+                        return (
+                            <div className='flex items-center justify-between p-4 border border-slate-300' key={index}>
+                                <div className='flex flex-col'>
+                                    <p className='text-sm font-medium text-slate-600'> {save.date}</p>
+                                    <p className='font-semibold text-red-600'>Kurangi Tabungan</p>
+                                </div>
+                                <p className='text-red-600'>-Rp{formatNumber(save.value)}</p>
+                            </div>
+                        );
+                    }
+                })}
             </div>
             <div className='fixed right-4 bottom-4 space-x-4'>
-                {!isCompleted && <AddSavingDataButton addHandler={addHandler} />}
+                {!isCompleted && <IncreaseSavingButton increaseHandler={increaseHandler} />}
+                <DecreaseSavingButton decreaseHandler={decreaseHandler} />
                 <DeleteSavingDataButton deleteHandler={deleteHandler} />
             </div>
         </div>
