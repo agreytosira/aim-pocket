@@ -1,3 +1,5 @@
+import { getFormattedTime } from '../utils/format';
+
 let savings = JSON.parse(localStorage.getItem('savings')) || [];
 
 const getAllSavings = () => {
@@ -48,11 +50,11 @@ function setIncompleted(id) {
 
 const increaseSaving = (id) => {
     const saving = getSavingsByID(id);
-    const currentDate = new Date().toISOString().split('T')[0];
+    const currentTime = getFormattedTime();
     const value = saving.nominal;
 
     const newSavingData = {
-        date: currentDate,
+        date: currentTime,
         value: parseFloat(value)
     };
 
@@ -64,11 +66,11 @@ const increaseSaving = (id) => {
 
 const decreaseSaving = (id) => {
     const saving = getSavingsByID(id);
-    const currentDate = new Date().toISOString().split('T')[0];
+    const currentTime = getFormattedTime();
     const value = saving.nominal;
 
     const newSavingData = {
-        date: currentDate,
+        date: currentTime,
         value: parseFloat(-value)
     };
 
