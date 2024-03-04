@@ -27,7 +27,7 @@ function Detail() {
 
       console.log(percent)
 
-      if (percent === 100) {
+      if (percent >= 100) {
         !isCompleted && setCompleted(id)
         alert('selamat kamu telah mencapai target')
         updateData()
@@ -62,7 +62,11 @@ function Detail() {
     setData(updatedData)
     setTotalSaved(total)
     setTotalLess(less)
-    setPercentage(percent)
+    if (percent <= 100) {
+      setPercentage(percent)
+    } else {
+      setPercentage(100)
+    }
     setEstimatedTime(less / nominal)
   }
 
@@ -90,9 +94,13 @@ function Detail() {
             </div>
             <p>{percentage.toFixed(0)}%</p>
           </div>
-          <p className='text-sm italic '>
-            Tersisa <strong>{estimatedTime}</strong> hari lagi
-          </p>
+          {estimatedTime > 0 ? (
+            <p className='text-sm italic '>
+              Tersisa <strong>{estimatedTime.toFixed(0)}</strong> hari lagi
+            </p>
+          ) : (
+            <p className='text-sm italic '>Tabungan telah tercapai</p>
+          )}
         </div>
       </div>
       <div className='grid grid-cols-2 p-4 mb-8 border border-slate-300 rounded-xl'>
@@ -102,7 +110,7 @@ function Detail() {
         </div>
         <div className='flex flex-col items-center text-center border-l border-l-slate-300'>
           <h5 className='text-xl font-semibold '>Kekurangan</h5>
-          <p className='text-red-600'>Rp{formatNumber(totalLess)}</p>
+          <p className='text-red-600'>Rp{totalLess > 100 ? formatNumber(totalLess) : 0}</p>
         </div>
       </div>
       {/* Riwayat Tabungan */}
