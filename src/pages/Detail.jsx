@@ -80,7 +80,7 @@ function Detail() {
         <span className='tracking-[0.25em] font-semibold text-sm text-blue-600'>RINCIAN TABUNGAN</span>
         <h1 className='text-4xl font-bold'>{name}</h1>
       </div>
-      <img className='object-contain w-full rounded-md aspect-video h-80' src={imageUrl} alt='' />
+      <img className='object-cover w-full rounded-md aspect-video h-80' src={imageUrl} alt='' />
       {/* Detail Tabungan */}
       <div className='grid items-center grid-cols-2 gap-2 my-4'>
         <div className='flex flex-col'>
