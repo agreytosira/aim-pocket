@@ -10,7 +10,7 @@ const AddSaving = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     const newSaving = {
-      id: Math.random().toString(),
+      id: Math.floor(Math.random() * 1000000).toString(),
       name,
       imageUrl,
       target: Number(target),
