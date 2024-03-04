@@ -3,8 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { setCompleted, setIncompleted, increaseSaving, getSavingsByID, deleteSaving, decreaseSaving } from '../data/dummy'
 import { formatNumber } from '../utils/format'
 import DeleteSavingDataButton from '../components/DeleteSavingDataButton'
-import DecreaseSavingButton from '../components/decreaseSavingButton'
-import IncreaseSavingButton from '../components/increaseSavingButton'
+import DecreaseSavingButton from '../components/DecreaseSavingButton'
+import IncreaseSavingButton from '../components/IncreaseSavingButton'
 
 function Detail() {
   const navigate = useNavigate()
