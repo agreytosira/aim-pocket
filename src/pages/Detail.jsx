@@ -135,7 +135,7 @@ function Detail() {
                   <p className='text-sm font-medium text-slate-600'> {save.date}</p>
                   <p className='font-semibold text-red-600'>Kurangi Tabungan</p>
                 </div>
-                <p className='text-red-600'>-Rp{formatNumber(save.value)}</p>
+                <p className='text-red-600'>-Rp{formatNumber(Math.abs(save.value))}</p>
               </div>
             )
           }
