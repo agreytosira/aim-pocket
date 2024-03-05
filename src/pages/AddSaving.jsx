@@ -12,7 +12,7 @@ const AddSaving = () => {
     const newSaving = {
       id: Math.floor(Math.random() * 1000000).toString(),
       name,
-      imageUrl,
+      imageUrl: imageUrl || '/placeholder.png',
       target: Number(target),
       nominal: Number(nominal),
       isCompleted: false,

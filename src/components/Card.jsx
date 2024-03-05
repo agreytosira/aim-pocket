@@ -14,7 +14,7 @@ function Card({ id, isCompleted }) {
   return (
     <Link className='relative transition-all duration-300 border border-gray-300 rounded-lg pointer hover:border-blue-600 ease' to={`/detail/${id}`}>
       {isCompleted && <div className='absolute px-2 py-1 text-xs font-semibold text-white bg-green-600 rounded-md top-4 right-4'>Completed</div>}
-      <img className='object-cover rounded-md aspect-video' src={imageUrl} alt={name} />
+      <img className='object-cover w-full rounded-md aspect-video' src={imageUrl} alt={name} />
       <div className='p-4 pt-2'>
         <div className='flex items-center gap-2'>
           <div className='w-full h-2 my-4 bg-slate-300 rounded-xl'>
