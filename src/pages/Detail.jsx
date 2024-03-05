@@ -141,7 +141,7 @@ function Detail() {
           }
         })}
       </div>
-      <div className='fixed space-x-4 right-4 bottom-4'>
+      <div className='fixed flex items-center gap-0 space-x-4 right-4 bottom-4'>
         {!isCompleted && <IncreaseButton increaseHandler={increaseHandler} />}
         <DecreaseButton decreaseHandler={decreaseHandler} />
         <DeleteSavingDataButton deleteHandler={deleteHandler} />
