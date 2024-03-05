@@ -75,7 +75,7 @@ function Detail() {
   }, [])
 
   return (
-    <div className='container w-2/5 mx-auto'>
+    <div className='container w-full mx-auto sm:w-4/5 md:w-3/5 lg:w-2/5'>
       <div className='mb-4 text-center'>
         <span className='tracking-[0.25em] font-semibold text-sm text-blue-600'>RINCIAN TABUNGAN</span>
         <h1 className='text-4xl font-bold'>{name}</h1>
