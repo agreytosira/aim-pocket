@@ -1,4 +1,4 @@
-const IncreaseSavingButton = ({ increaseHandler }) => {
+const IncreaseButton = ({ increaseHandler }) => {
   return (
     <button className='p-4 font-semibold text-white bg-blue-600' onClick={() => increaseHandler()}>
       Tambah Data Tabungan
@@ -6,4 +6,4 @@ const IncreaseSavingButton = ({ increaseHandler }) => {
   )
 }
 
-export default IncreaseSavingButton
+export default IncreaseButton

@@ -3,8 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { setCompleted, setIncompleted, increaseSaving, getSavingsByID, deleteSaving, decreaseSaving } from '../data/dummy'
 import { formatNumber } from '../utils/format'
 import DeleteSavingDataButton from '../components/DeleteSavingDataButton'
-import DecreaseSavingButton from '../components/DecreaseSavingButton'
-import IncreaseSavingButton from '../components/IncreaseSavingButton'
+import DecreaseButton from '../components/DecreaseButton'
+import IncreaseButton from '../components/IncreaseButton'
 
 function Detail() {
   const navigate = useNavigate()
@@ -142,8 +142,8 @@ function Detail() {
         })}
       </div>
       <div className='fixed space-x-4 right-4 bottom-4'>
-        {!isCompleted && <IncreaseSavingButton increaseHandler={increaseHandler} />}
-        <DecreaseSavingButton decreaseHandler={decreaseHandler} />
+        {!isCompleted && <IncreaseButton increaseHandler={increaseHandler} />}
+        <DecreaseButton decreaseHandler={decreaseHandler} />
         <DeleteSavingDataButton deleteHandler={deleteHandler} />
       </div>
     </div>
