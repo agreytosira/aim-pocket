@@ -27,7 +27,7 @@ function Home() {
   return (
     <div className='container min-h-[80dvh]'>
       {savings.length > 0 ? (
-        <div className='grid gap-4 grd-cols-1 sm:grid-cols-2 md:grid-cols-4'>
+        <div className='grid gap-4 grd-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
           {savings.map((saving) => (
             <Card id={saving.id} key={saving.id} isCompleted={saving.isCompleted} />
           ))}
