@@ -18,9 +18,10 @@ function Card({ id, isCompleted }) {
             <div className='p-4 pt-2'>
                 <div className='flex items-center gap-2'>
                     <div className='w-full h-2 my-4 bg-slate-300 rounded-xl'>
-                        <div className={`bg-blue-600 h-2 rounded-xl`} style={{ width: `${percentage.toFixed(0)}%` }}></div>
+                        <div className={`bg-blue-600 h-2 rounded-xl`} style={{ width: `${percentage.toFixed(0) >= 100 ? '100%' : `${percentage.toFixed(0)}%`}` }}></div>
                     </div>
-                    <p className='text-sm font-semibold'>{percentage > 100 ? 100 : percentage.toFixed(0)}%</p>
+
+                    <p className='text-sm font-semibold'>{percentage >= 100 ? 100 : percentage.toFixed(0)}%</p>
                 </div>
                 <h3 className='text-lg font-bold text-slate-900 dark:text-slate-50'>{name}</h3>
                 <h4 className='text-base font-semibold text-slate-600'>Rp{formatNumber(target)}</h4>
