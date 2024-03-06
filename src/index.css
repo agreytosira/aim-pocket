@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+h1 {
+    @apply tracking-tighter;
+}
+
 body {
+    @apply tracking-tight;
     @apply text-slate-900;
+    font-family: 'Inter', sans-serif;
 }
 
 p {
