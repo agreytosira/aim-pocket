@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Card from '../components/Card'
 import { getAllSavings } from '../data/dummy'
 
-function Home() {
+function HomePage() {
   const [savings, setSavings] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
@@ -43,4 +43,4 @@ function Home() {
   )
 }
 
-export default Home
+export default HomePage

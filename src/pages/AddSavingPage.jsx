@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { addSaving } from '../data/dummy'
 import { useNavigate } from 'react-router-dom'
 
-const AddSaving = () => {
+const AddSavingPage = () => {
   const [name, setName] = useState('')
   const [imageUrl, setImageUrl] = useState('')
   const [target, setTarget] = useState(0)
@@ -59,4 +59,4 @@ const AddSaving = () => {
   )
 }
 
-export default AddSaving
+export default AddSavingPage

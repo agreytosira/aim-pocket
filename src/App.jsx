@@ -1,9 +1,9 @@
 import Navbar from './components/Navbar'
 import { Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
-import About from './pages/About'
-import Detail from './pages/Detail'
-import AddSaving from './pages/AddSaving'
+import HomePage from './pages/HomePage'
+import AboutPage from './pages/AboutPage'
+import DetailPage from './pages/DetailPage'
+import AddSavingPage from './pages/AddSavingPage'
 import Footer from './components/Footer'
 
 function App() {
@@ -13,10 +13,10 @@ function App() {
         <Navbar />
       </header>
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/detail/:id' element={<Detail />} />
-        <Route path='/add' element={<AddSaving />} />
+        <Route path='/' element={<HomePage />} />
+        <Route path='/about' element={<AboutPage />} />
+        <Route path='/detail/:id' element={<DetailPage />} />
+        <Route path='/add' element={<AddSavingPage />} />
       </Routes>
       <Footer />
     </>

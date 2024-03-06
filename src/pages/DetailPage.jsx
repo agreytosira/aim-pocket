@@ -6,7 +6,7 @@ import DeleteSavingDataButton from '../components/DeleteSavingDataButton'
 import DecreaseButton from '../components/DecreaseButton'
 import IncreaseButton from '../components/IncreaseButton'
 
-function Detail() {
+function DetailPage() {
   const navigate = useNavigate()
   const { id } = useParams()
   const [data, setData] = useState(getSavingsByID(id))
@@ -150,4 +150,4 @@ function Detail() {
   )
 }
 
-export default Detail
+export default DetailPage
