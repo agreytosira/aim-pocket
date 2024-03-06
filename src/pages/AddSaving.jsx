@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { addSaving } from '../data/dummy'
+import { useNavigate } from 'react-router-dom'
 
 const AddSaving = () => {
   const [name, setName] = useState('')
   const [imageUrl, setImageUrl] = useState('')
   const [target, setTarget] = useState(0)
   const [nominal, setNominal] = useState(0)
+  const navigate = useNavigate()
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -20,6 +22,8 @@ const AddSaving = () => {
     }
 
     addSaving(newSaving)
+    alert('Tabungan berhasl dibuat!')
+    navigate('/')
 
     setName('')
     setImageUrl('')
