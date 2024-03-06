@@ -17,7 +17,11 @@ function HomePage() {
     }, []);
 
     if (isLoading) {
-        return <p>Loading....</p>;
+        return (
+            <div className='container'>
+                <p>Loading....</p>;
+            </div>
+        );
     }
 
     return (
