@@ -12,7 +12,7 @@ function Card({ id, isCompleted }) {
     const percentage = (totalSaved / target) * 100;
 
     return (
-        <Link className='relative transition-all duration-300 border border-gray-300 rounded-lg pointer hover:border-blue-600 ease' to={`/detail/${id}`}>
+        <Link className='relative transition-all duration-300 border border-slate-300 dark:border-slate-600 rounded-lg pointer hover:border-blue-600 ease' to={`/detail/${id}`}>
             {isCompleted && <div className='absolute px-2 py-1 text-xs font-semibold text-white bg-green-600 rounded-md top-4 right-4'>Selesai</div>}
             <img className='object-cover w-full rounded-md aspect-video' src={imageUrl} alt={name} />
             <div className='p-4 pt-2'>
@@ -22,7 +22,7 @@ function Card({ id, isCompleted }) {
                     </div>
                     <p className='text-sm font-semibold'>{percentage > 100 ? 100 : percentage.toFixed(0)}%</p>
                 </div>
-                <h3 className='text-lg font-bold text-slate-900'>{name}</h3>
+                <h3 className='text-lg font-bold text-slate-900 dark:text-slate-50'>{name}</h3>
                 <h4 className='text-base font-semibold text-slate-600'>Rp{formatNumber(target)}</h4>
                 {!isCompleted && (
                     <p className='text-[12px]'>

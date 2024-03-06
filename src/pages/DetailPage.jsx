@@ -92,7 +92,7 @@ function DetailPage() {
             {/* Detail Tabungan */}
             <div className='grid items-center grid-cols-2 gap-2 my-4'>
                 <div className='flex flex-col'>
-                    <h2 className='text-2xl font-bold text-slate-900'>Rp{formatNumber(target)}</h2>
+                    <h2 className='text-2xl font-bold text-slate-900 dark:text-slate-50'>Rp{formatNumber(target)}</h2>
                     <h3 className='font-semibold text-md text-slate-600'>Rp{formatNumber(nominal)}/Hari</h3>
                 </div>
                 <div className='flex flex-col'>
@@ -111,14 +111,14 @@ function DetailPage() {
                     )}
                 </div>
             </div>
-            <div className='grid grid-cols-2 p-4 mb-8 border border-slate-300 rounded-xl'>
+            <div className='grid grid-cols-2 p-4 mb-8 border border-slate-300 dark:border-slate-600 rounded-xl'>
                 <div className='flex flex-col items-center text-center'>
                     <h5 className='text-xl font-semibold '>Terkumpul</h5>
-                    <p className='text-green-600'>Rp{formatNumber(totalSaved)}</p>
+                    <p className='text-green-600 dark:text-green-700'>Rp{formatNumber(totalSaved)}</p>
                 </div>
                 <div className='flex flex-col items-center text-center border-l border-l-slate-300'>
                     <h5 className='text-xl font-semibold '>Kekurangan</h5>
-                    <p className='text-red-600'>Rp{totalLess > 100 ? formatNumber(totalLess) : 0}</p>
+                    <p className='text-red-600 dark:text-red-700'>Rp{totalLess > 100 ? formatNumber(totalLess) : 0}</p>
                 </div>
             </div>
             {/* Riwayat Tabungan */}
@@ -128,22 +128,22 @@ function DetailPage() {
                 {saved.map((save, index) => {
                     if (save.value > 0) {
                         return (
-                            <div className='flex items-center justify-between p-4 border border-slate-300' key={index}>
+                            <div className='flex items-center justify-between p-4 border border-slate-300 dark:border-slate-600' key={index}>
                                 <div className='flex flex-col'>
                                     <p className='text-sm font-medium text-slate-600'> {save.date}</p>
-                                    <p className='font-semibold text-green-600'>Isi Tabungan</p>
+                                    <p className='font-semibold text-green-600 dark:text-green-700'>Isi Tabungan</p>
                                 </div>
-                                <p className='text-green-600'>+Rp{formatNumber(save.value)}</p>
+                                <p className='text-green-600 dark:text-green-700'>+Rp{formatNumber(save.value)}</p>
                             </div>
                         );
                     } else {
                         return (
-                            <div className='flex items-center justify-between p-4 border border-slate-300' key={index}>
+                            <div className='flex items-center justify-between p-4 border border-slate-300 dark:border-slate-600' key={index}>
                                 <div className='flex flex-col'>
-                                    <p className='text-sm font-medium text-slate-600'> {save.date}</p>
-                                    <p className='font-semibold text-red-600'>Kurangi Tabungan</p>
+                                    <p className='text-sm font-medium text-slate-700'> {save.date}</p>
+                                    <p className='font-semibold text-red-600 dark:text-red-700'>Kurangi Tabungan</p>
                                 </div>
-                                <p className='text-red-600'>-Rp{formatNumber(Math.abs(save.value))}</p>
+                                <p className='text-red-600 dark:text-red-700'>-Rp{formatNumber(Math.abs(save.value))}</p>
                             </div>
                         );
                     }
