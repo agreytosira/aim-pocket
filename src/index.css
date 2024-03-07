@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 h1 {
-    @apply tracking-tighter;
+  @apply tracking-tighter;
 }
 
 body {
-    @apply tracking-tight text-slate-900 dark:text-slate-50;
-    font-family: 'Inter', sans-serif;
+  @apply tracking-tight text-slate-900 dark:text-slate-50;
+  font-family: 'Inter', sans-serif;
 }
 
 p {
-    @apply text-slate-600 dark:text-slate-300;
+  @apply text-slate-600 dark:text-slate-300;
 }

@@ -44,7 +44,7 @@ const AddSavingPage = () => {
   }
 
   return (
-    <div className='container w-full sm:w-4/5 md:w-3/5 lg:w-2/6'>
+    <div className='container w-full mt-16 sm:w-4/5 md:w-3/5 lg:w-2/6 sm:mt-0'>
       <form onSubmit={handleSubmit} className='flex flex-col gap-2'>
         <h1 className='mb-4 text-2xl font-bold text-center'>Buat Tabungan Baru</h1>
         <label className='flex flex-col'>
