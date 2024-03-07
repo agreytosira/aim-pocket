@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import ToggleTheme from './ToggleTheme'
-import { FaBars } from 'react-icons/fa6'
+import { FaBars, FaX } from 'react-icons/fa6'
+import { motion, AnimatePresence } from 'framer-motion'
 
 function Navbar() {
   const location = useLocation().pathname
@@ -36,30 +37,46 @@ function Navbar() {
             <li className='flex items-center aspect-square size-3'>
               <ToggleTheme />
             </li>
-            <li className='flex items-center sm:hidden aspect-square size-3'>
-              <button onClick={toggleMobileMenu}>
-                <FaBars />
-              </button>
+            <li className='flex items-center justify-center p-4 border rounded-md sm:hidden aspect-square size-3 border-slate-600'>
+              <button onClick={toggleMobileMenu}>{mobileMenu ? <FaX /> : <FaBars />}</button>
             </li>
           </ul>
         </div>
       </div>
-      {mobileMenu && (
-        <div className='container flex items-center justify-center h-[90dvh] py-4 mx-auto sm:h-auto'>
-          <ul className='flex flex-col items-center gap-4'>
-            <li>
-              <Link to='/' className={`${location == '/' && 'text-blue-600'} font-semibold text-xl`}>
-                Beranda
-              </Link>
-            </li>
-            <li>
-              <Link to='/about' className={`${location == '/about' && 'text-blue-600'} font-semibold text-xl`}>
-                Tentang
-              </Link>
-            </li>
-          </ul>
-        </div>
-      )}
+
+      <AnimatePresence>
+        {mobileMenu && (
+          <motion.div
+            className='container flex items-center justify-center h-[90dvh] py-4 mx-auto sm:h-auto'
+            initial={{
+              opacity: 0,
+              height: 0
+            }}
+            animate={{
+              opacity: 1,
+              height: '100dvh',
+              transition: { duration: 0.2, ease: 'easeInOut' }
+            }}
+            exit={{
+              opacity: 0,
+              height: 0,
+              transition: { duration: 0.2, ease: 'easeInOut' }
+            }}>
+            <ul className='flex flex-col items-center gap-4'>
+              <li>
+                <Link to='/' className={`${location == '/' && 'text-blue-600'} font-semibold text-xl`}>
+                  Beranda
+                </Link>
+              </li>
+              <li>
+                <Link to='/about' className={`${location == '/about' && 'text-blue-600'} font-semibold text-xl`}>
+                  Tentang
+                </Link>
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   )
 }
