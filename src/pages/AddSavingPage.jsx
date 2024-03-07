@@ -12,7 +12,8 @@ const AddSavingPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    if (target > nominal) {
+
+    if (Number(target) > Number(nominal)) {
       const newSaving = {
         id: Math.floor(Math.random() * 1000000).toString(),
         name,
