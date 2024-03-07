@@ -6,6 +6,10 @@ h1 {
   @apply tracking-tighter;
 }
 
+html {
+  @apply text-sm antialiased sm:text-base;
+}
+
 body {
   @apply tracking-tight text-slate-900 dark:text-slate-50;
   font-family: 'Inter', sans-serif;
