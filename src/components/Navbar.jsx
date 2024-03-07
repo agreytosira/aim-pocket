@@ -6,7 +6,6 @@ import { FaBars } from 'react-icons/fa6'
 function Navbar() {
   const location = useLocation().pathname
   const [mobileMenu, setMobileMenu] = useState(false)
-  const isMobile = window.innerWidth < 640
 
   const toggleMobileMenu = () => {
     setMobileMenu(!mobileMenu)
@@ -17,7 +16,7 @@ function Navbar() {
   }, [location])
 
   return (
-    <nav className='fixed top-0 left-0 w-full py-4 sm:static bg-slate-50 dark:bg-slate-900'>
+    <nav className='fixed top-0 left-0 z-50 w-full py-4 sm:static bg-slate-50 dark:bg-slate-900'>
       <div className='container mx-auto'>
         <div className='flex justify-between align-center'>
           <h1 className='text-2xl font-bold text-blue-600'>
