@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Card from '../components/Card'
 import { getAllSavings } from '../data/dummy'
+import { FaPlus } from 'react-icons/fa6'
 
 function HomePage() {
   const [savings, setSavings] = useState([])
@@ -36,8 +37,8 @@ function HomePage() {
         <p>Belum ada tabungan yang dibuat</p>
       )}
 
-      <Link to='/add' className='fixed flex items-center justify-center w-12 h-12 p-4 text-white bg-blue-600 rounded-full bottom-4 right-4 aspect-square'>
-        +
+      <Link to='/add' className='fixed flex items-center justify-center w-12 h-12 p-4 text-xl text-white bg-blue-600 rounded-full bottom-4 right-4 aspect-square'>
+        <FaPlus />
       </Link>
     </div>
   )
